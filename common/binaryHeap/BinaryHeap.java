@@ -43,7 +43,7 @@ public class BinaryHeap<T extends IHeapElem<T>> implements IBinaryHeap<T> {
 				T temp = Heap.elementAt(pos);
 				Heap.setElementAt(Heap.elementAt(newpos), pos);
 				Heap.setElementAt(temp, newpos);
-				newpos = pos;
+				pos = newpos;
 			} else
 				return;
 
@@ -54,16 +54,15 @@ public class BinaryHeap<T extends IHeapElem<T>> implements IBinaryHeap<T> {
 		int tpos;
 		while (true) {
 			tpos = pos;
-			if (2 * pos + 1 <= Heap.size()) {
-				if (Heap.elementAt(pos).greaterThan(Heap.elementAt(2 * pos)))
-					tpos = 2 * pos;
-				if (Heap.elementAt(tpos).greaterThan(Heap.elementAt(2 * pos + 1)))
+			if (2 * pos + 2 <= Heap.size() - 1) {
+				if (Heap.elementAt(pos).greaterThan(Heap.elementAt(2 * pos + 1)))
 					tpos = 2 * pos + 1;
-			} else if (2 * pos <= Heap.size()) {
-				if (Heap.elementAt(pos).greaterThan(Heap.elementAt(2 * pos)))
-					tpos = 2 * pos;
+				if (Heap.elementAt(tpos).greaterThan(Heap.elementAt(2 * pos + 2)))
+					tpos = 2 * pos + 2;
+			} else if (2 * pos + 1 <= Heap.size() - 1) {
+				if (Heap.elementAt(pos).greaterThan(Heap.elementAt(2 * pos + 1)))
+					tpos = 2 * pos + 1;
 			}
-
 			if (pos != tpos) {
 				T temp = Heap.elementAt(pos);
 				Heap.setElementAt(Heap.elementAt(tpos), pos);
@@ -71,6 +70,10 @@ public class BinaryHeap<T extends IHeapElem<T>> implements IBinaryHeap<T> {
 			} else
 				return;
 		}
+	}
 
+	public void print() {
+		for (int i = 0; i < Heap.size(); i++)
+			Heap.elementAt(i).print();
 	}
 }

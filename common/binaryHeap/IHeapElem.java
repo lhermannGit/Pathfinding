@@ -6,4 +6,6 @@ public interface IHeapElem<T> extends Comparable<T> {
 
 	public void changeValue(T elem);
 
+	public void print();
+
 }
