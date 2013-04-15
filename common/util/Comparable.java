@@ -1,4 +1,4 @@
-package binaryHeap;
+package util;
 
 public interface Comparable<T> {
 	

@@ -1,13 +1,13 @@
 package binaryHeap;
 
 import java.util.Vector;
+import util.Comparable;
 
-public class BinaryHeap<T extends IHeapElem<T>> implements IBinaryHeap<T> {
+// might want to use IHeapElem instead of Comparable. Check visibility for decision
+
+public class BinaryHeap<T extends Comparable<T>> implements IBinaryHeap<T> {
 
 	Vector<T> Heap = new Vector<T>();
-
-	public BinaryHeap() {
-	}
 
 	@Override
 	public void push(T elem) {
@@ -72,8 +72,9 @@ public class BinaryHeap<T extends IHeapElem<T>> implements IBinaryHeap<T> {
 		}
 	}
 
-	public void print() {
-		for (int i = 0; i < Heap.size(); i++)
-			Heap.elementAt(i).print();
-	}
+//	public void print() {
+//		for (int i = 0; i < Heap.size(); i++)
+//			Heap.elementAt(i).print();
+//	}
+	
 }
