@@ -1,20 +1,24 @@
 package priorityQueue;
 
-import binaryHeap.BinaryHeap;
+import advancedHeap.AdvancedHeap;
 
 public class PriorityQueue<T> implements IPriorityQueue<T> {
-	
-	BinaryHeap<PriorityElem<T>> Heap = new BinaryHeap<PriorityElem<T>>();
-	
+
+	protected AdvancedHeap<PriorityElem<T>> Heap = new AdvancedHeap<PriorityElem<T>>(
+			new PriorityComparator<PriorityElem<T>>());
+
 	@Override
 	public void pushWithPriority(T elem, int priority) {
-		Heap.push(new PriorityElem<T>(elem, priority));		
+		Heap.push(new PriorityElem<T>(elem, priority));
 	}
 
 	@Override
 	public void updatePriority(T elem, int priority) {
-		// implement changeElem in binaryHeap		
+		Heap.update(new PriorityElem<T>(elem, priority));
 	}
+
+	// public void updatePriority(int pos, int priority) {
+	// }
 
 	@Override
 	public T pop() {
@@ -28,8 +32,7 @@ public class PriorityQueue<T> implements IPriorityQueue<T> {
 
 	@Override
 	public int elemPos(T elem) {
-		return Heap.elemPos(new PriorityElem<T>(elem,0));
+		return Heap.elemPos(new PriorityElem<T>(elem, 0));
 	}
 
-	
 }
